@@ -2,3 +2,7 @@ a.menu,
 div.main-header--mobile-nav {
   cursor: pointer;
 }
+
+div.page-body-content {
+  margin-top: 60px;
+}

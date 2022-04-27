@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Router } from "react-router-dom";
 
 // Components
 import Header from "./components/Header.js";
 import Cart from "./components/Cart.js";
 import Footer from "./components/Footer.js";
+import Login from "./components/Login.js";
+import Register from "./components/Register.js";
+import WishList from "./components/WishList.js";
 
 function App() {
 
@@ -14,7 +17,7 @@ function App() {
 
 
   const toggleCart = (e) => {
-    if(cartState) {
+    if (cartState) {
       document.documentElement.classList.remove("scroll-locked");
       document.getElementsByClassName("sidebar-drawer-container")[0].setAttribute("data-sidebar-drawer-animation-state", "close");
       document.getElementsByClassName("sidebar-drawer-container")[0].removeAttribute("data-tab-index");
@@ -29,7 +32,7 @@ function App() {
   };
 
   const toggleSideMenu = (e) => {
-    if(sideMenuState) {
+    if (sideMenuState) {
       document.documentElement.classList.remove("scroll-locked");
       document.getElementById("main-header--mobile-nav").classList.remove("active");
       setSideMenuState(false);
@@ -72,16 +75,25 @@ function App() {
   }, []);*/
 
   return (
-    <div className="App">
-      <Cart />
-      <Header
-        toggleSideMenu={toggleSideMenu}
-        toggleCart={toggleCart}
-        displaySearchField={displaySearchField}
-        closeSearchField={closeSearchField}
-      />
-      <Footer />
-    </div>
+      <div className="App">
+        <Cart />
+        <Header
+          toggleSideMenu={toggleSideMenu}
+          toggleCart={toggleCart}
+          displaySearchField={displaySearchField}
+          closeSearchField={closeSearchField}
+        />
+        <div className="page-body-content">
+          <Switch>
+            <Route path="/account/login" render={props=><Login {...props}/>} />
+            <Route path="/account/register" render={props=><Register {...props}/>} />
+            <Route path="/pages/wishlist" render={props=><WishList {...props}/>} />
+          </Switch>
+        </div>
+
+        <Footer />
+
+      </div>
   );
 }
 
