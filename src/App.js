@@ -8,6 +8,8 @@ import Footer from "./components/Footer.js";
 import Login from "./components/Login.js";
 import Register from "./components/Register.js";
 import WishList from "./components/WishList.js";
+import Account from "./components/Account.js";
+import Addresses from "./components/Addresses.js";
 
 function App() {
 
@@ -87,6 +89,8 @@ function App() {
           <Switch>
             <Route path="/account/login" render={props=><Login {...props}/>} />
             <Route path="/account/register" render={props=><Register {...props}/>} />
+            <Route path="/account/addresses" render={props=><Addresses {...props}/>} />
+            <Route path="/account" render={props=><Account {...props}/>} />
             <Route path="/pages/wishlist" render={props=><WishList {...props}/>} />
           </Switch>
         </div>
