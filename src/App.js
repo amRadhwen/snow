@@ -11,6 +11,9 @@ import WishList from "./components/WishList.js";
 import Account from "./components/Account.js";
 import Addresses from "./components/Addresses.js";
 
+// routes protection
+import { isAuth, withAuth } from "./protection/authProtection";
+
 function App() {
 
   const [sideMenuState, setSideMenuState] = useState(false);
@@ -87,10 +90,10 @@ function App() {
         />
         <div className="page-body-content">
           <Switch>
-            <Route path="/account/login" render={props=><Login {...props}/>} />
-            <Route path="/account/register" render={props=><Register {...props}/>} />
-            <Route path="/account/addresses" render={props=><Addresses {...props}/>} />
-            <Route path="/account" render={props=><Account {...props}/>} />
+            <Route path="/account/login" component={isAuth(Login)} />
+            <Route path="/account/register" component={isAuth(Register)} />
+            <Route path="/account/addresses" component={withAuth(Addresses)} />
+            <Route path="/account" component={withAuth(Account)} />
             <Route path="/pages/wishlist" render={props=><WishList {...props}/>} />
           </Switch>
         </div>
