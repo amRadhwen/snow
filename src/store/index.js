@@ -34,8 +34,10 @@ const middleware = [thunk, logger];
 // Create the redux store
 const store = createStore(rootReducer, persistedState, applyMiddleware(...middleware));
 
+/*
 const unsubscribe = store.subscribe(() => {
     saveToLocalstorage(store.getState());
 })
+*/
 
 export default store;
