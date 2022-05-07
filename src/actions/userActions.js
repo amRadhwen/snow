@@ -23,7 +23,7 @@ export const signup = (_data) => async(dispatch) => {
     } catch (error) {
         dispatch({
             type: USER_SIGNUP_FAILED,
-            payload: error.response.data
+            payload: error.response.data.error
         })
     }
 }

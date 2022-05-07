@@ -3,6 +3,10 @@ import {
     USER_SIGNIN_SUCCESS,
     USER_SIGNIN_FAILED,
     USER_SIGNIN_RESET,
+    USER_SIGNUP_REQUEST,
+    USER_SIGNUP_SUCCESS,
+    USER_SIGNUP_FAILED,
+    USER_SIGNUP_RESET,
     USER_SIGNOUT_REQUEST,
     USER_SIGNOUT_SUCCESS,
     USER_SIGNOUT_FAILED,
@@ -10,7 +14,7 @@ import {
 } from "../constants";
 
 
-export const authReducer = (state = {}, action) => {
+export const signinReducer = (state = {}, action) => {
     switch(action.type) {
         case USER_SIGNIN_REQUEST:
             return {loading: true};
@@ -19,6 +23,21 @@ export const authReducer = (state = {}, action) => {
         case USER_SIGNIN_FAILED:
             return {loading: false, error: action.payload};
         case USER_SIGNIN_RESET:
+            return {}
+        default:
+        return state;
+    }
+}
+
+export const signupReducer = (state = {}, action) => {
+    switch(action.type) {
+        case USER_SIGNUP_REQUEST:
+            return {loading: true};
+        case USER_SIGNUP_SUCCESS:
+            return {loading: false, success: true, token: action.payload.token, user: action.payload.user};
+        case USER_SIGNUP_FAILED:
+            return {loading: false, error: action.payload};
+        case USER_SIGNUP_RESET:
             return {}
         default:
         return state;

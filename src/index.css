@@ -6,3 +6,7 @@ div.main-header--mobile-nav {
 div.page-body-content {
   margin-top: 60px;
 }
+
+div.error-message {
+  margin-top: 20px;
+}
