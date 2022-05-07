@@ -1,4 +1,5 @@
 import {
+    SERVER_URL,
     USER_SIGNUP_REQUEST,
     USER_SIGNUP_SUCCESS,
     USER_SIGNUP_FAILED,
@@ -13,7 +14,7 @@ export const signup = (_data) => async(dispatch) => {
         dispatch({
             type: USER_SIGNUP_REQUEST
         })
-        const data = await axios.post(`${process.env.SERVER_URL}/api/user/`, _data);
+        const {data} = await axios.post(`${SERVER_URL}/api/user/`, _data);
         dispatch({
             type: USER_SIGNUP_SUCCESS,
             payload: data
@@ -22,7 +23,7 @@ export const signup = (_data) => async(dispatch) => {
     } catch (error) {
         dispatch({
             type: USER_SIGNUP_FAILED,
-            payload: error
+            payload: error.response.data
         })
     }
 }
